@@ -35,7 +35,7 @@ func ConvertTime(wf *aw.Workflow, cli *cli.Context) {
 		}
 	} else if cli.Args().Len() == 2 {
 		argStr := fmt.Sprintf("%s %s", cli.Args().Get(0), cli.Args().Get(1))
-		res, err := time.Parse("2006-01-02 15:04:05", argStr)
+		res, err := time.ParseInLocation("2006-01-02 15:04:05", argStr, time.Local)
 		if err != nil {
 			wf.NewItem("请输入2006-01-02 15:04:05格式").Arg("请输入2006-01-02 15:04:05格式").Valid(true)
 			wf.SendFeedback()
